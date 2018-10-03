@@ -29,7 +29,7 @@ public class ConsoleCommunication {
     }
 
     public void lose() {
-        System.out.println("You lose!");
+        System.out.println("You lost!");
     }
 
     public void word(String wordMask) {
