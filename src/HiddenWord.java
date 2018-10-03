@@ -3,7 +3,7 @@ public class HiddenWord {
     private boolean[] guessedLetters;
     private int wordLength;
 
-    public hiddenWord() {
+    public HiddenWord() {
         word = "hangman";
         wordLength = word.length();
         guessedLetters = new boolean[wordLength];
