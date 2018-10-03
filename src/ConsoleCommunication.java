@@ -24,15 +24,16 @@ public class ConsoleCommunication {
         System.out.println("Missed, mistake " + numberOfMistakes + " out of " + maxNumberOfMistakes + ".\n");
     }
 
-    public void gameOver(boolean isWin) {
-        if (isWin) {
-            System.out.println("You won!");
-        }
-        else {
-            System.out.println("You lose!");
-        }
+    public void win() {
+        System.out.println("You won!");
     }
 
+    public void lose() {
+        System.out.println("You lose!");
+    }
 
+    public void word(String wordMask) {
+        System.out.println("The word:" + wordMask + "\n");
+    }
 
 }

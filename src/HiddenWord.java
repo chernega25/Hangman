@@ -2,11 +2,13 @@ public class HiddenWord {
     private String word;
     private boolean[] guessedLetters;
     private int wordLength;
+    private int numberOfGuessedLetters;
 
     public HiddenWord() {
         word = "hangman";
         wordLength = word.length();
         guessedLetters = new boolean[wordLength];
+        numberOfGuessedLetters = 0;
     }
 
     public boolean checkALetter(char letter) {
@@ -16,6 +18,7 @@ public class HiddenWord {
             if (!guessedLetters[i] && word.charAt(i) == letter) {
                 guessedLetters[i] = true;
                 guessed = true;
+                numberOfGuessedLetters += 1;
             }
         }
         return guessed;
@@ -33,5 +36,9 @@ public class HiddenWord {
             }
         }
         return wordMask.toString();
+    }
+
+    public boolean isGuessed() {
+        return numberOfGuessedLetters == wordLength;
     }
 }
