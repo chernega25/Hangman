@@ -13,6 +13,6 @@ public class ConsoleGame {
             System.out.println(game.roundEnd());
         }
 
-        game.gameOver();
+        System.out.println(game.gameOver());
     }
 }

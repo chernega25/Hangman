@@ -23,12 +23,12 @@ public class Game {
         }
         else {
             numberOfMistakes += 1;
-            return "Missed, mistake" + numberOfMistakes + " out of " + maxNumberOfMistakes + ".\n";
+            return "Missed, mistake " + numberOfMistakes + " out of " + maxNumberOfMistakes + ".\n";
         }
     }
 
     public String roundEnd() {
-        return "The word:" + hiddenWord.getWordMask() + "\n";
+        return "The word: " + hiddenWord.getWordMask() + "\n";
     }
 
     public boolean isEnd() {
@@ -38,10 +38,10 @@ public class Game {
     public String gameOver() {
         if (hiddenWord.isGuessed()) {
             return "You won!";
-        }
-        if (numberOfMistakes == maxNumberOfMistakes) {
+        } else if (numberOfMistakes == maxNumberOfMistakes) {
             return "You lost!";
+        } else {
+            return null;
         }
-        return null;
     }
 }
