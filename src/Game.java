@@ -1,43 +1,47 @@
-import java.io.InputStream;
-
 public class Game {
     private int maxNumberOfMistakes;
     private int numberOfMistakes;
     private HiddenWord hiddenWord;
-    private ConsoleCommunication consoleCommunication;
 
-    private Game(int maxNumberOfMistakes, InputStream inputStream) {
+    private Game(int maxNumberOfMistakes) {
         this.maxNumberOfMistakes = maxNumberOfMistakes;
         this.numberOfMistakes = 0;
         hiddenWord = new HiddenWord();
-        consoleCommunication = new ConsoleCommunication(inputStream);
     }
 
-    public static Game startAGame(int maxNumberOfMistakes, InputStream inputStream) {
-        return new Game(maxNumberOfMistakes, inputStream);
+    public static Game startAGame(int maxNumberOfMistakes) {
+        return new Game(maxNumberOfMistakes);
     }
 
-    public void round() {
-        char letter = consoleCommunication.guessALetter();
+    public String roundStart() {
+        return "Guess a letter:";
+    }
+
+    public String roundCheckALetter(char letter) {
         if (hiddenWord.checkALetter(letter)) {
-            consoleCommunication.hit();
+            return "Hit!\n";
         }
         else {
-            consoleCommunication.missed(++numberOfMistakes, maxNumberOfMistakes);
+            numberOfMistakes += 1;
+            return "Missed, mistake" + numberOfMistakes + " out of " + maxNumberOfMistakes + ".\n";
         }
-        consoleCommunication.word(hiddenWord.getWordMask());
+    }
+
+    public String roundEnd() {
+        return "The word:" + hiddenWord.getWordMask() + "\n";
     }
 
     public boolean isEnd() {
         return hiddenWord.isGuessed() || numberOfMistakes == maxNumberOfMistakes;
     }
 
-    public void gameOver() {
+    public String gameOver() {
         if (hiddenWord.isGuessed()) {
-            consoleCommunication.win();
+            return "You won!";
         }
         if (numberOfMistakes == maxNumberOfMistakes) {
-            consoleCommunication.lose();
+            return "You lost!";
         }
+        return null;
     }
 }
