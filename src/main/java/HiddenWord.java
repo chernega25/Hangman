@@ -29,10 +29,9 @@ public class HiddenWord {
 
         for (int i = 0; i < wordLength; i++) {
             if (guessedLetters[i]) {
-                wordMask = wordMask.append(word.charAt(i));
-            }
-            else {
-                wordMask = wordMask.append('*');
+                wordMask.append(word.charAt(i));
+            } else {
+                wordMask.append('*');
             }
         }
         return wordMask.toString();
