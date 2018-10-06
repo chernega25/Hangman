@@ -5,7 +5,8 @@ public class HiddenWord {
     private int numberOfGuessedLetters;
 
     public HiddenWord() {
-        word = "hangman";
+        Dictionary dictionary = new Dictionary();
+        word = dictionary.getRandomWord();
         wordLength = word.length();
         guessedLetters = new boolean[wordLength];
         numberOfGuessedLetters = 0;
